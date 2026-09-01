@@ -1,0 +1,94 @@
+---
+const FAQS = [
+  {
+    id: "faq-1",
+    q: "How does Instant Shorts AI work without requiring a paid API key?",
+    a: "Unlike traditional platforms that bill you for every word via OpenAI or ElevenLabs, Instant Shorts AI utilizes client-side Web-LLM (running quantized models in your browser via WebGPU) and browser Web Speech API / free HuggingFace endpoints. You get 100% free script generation and voice synthesis with zero token bills."
+  },
+  {
+    id: "faq-2",
+    q: "Can I monetize videos generated with Instant Shorts AI on YouTube & Reels?",
+    a: "Yes, 100%! All generated scripts, audio tracks, background footage (ASMR, gameplay, space loops), and fonts carry full commercial rights. You own 100% of your AdSense, Creator Fund, and sponsor revenues."
+  },
+  {
+    id: "faq-3",
+    q: "Can I bring my own OpenAI or ElevenLabs key if I prefer?",
+    a: "Absolutely. Instant Shorts AI includes a BYOK (Bring Your Own Key) setting in the studio. You can plug in your own OpenAI, Groq, Anthropic, or ElevenLabs API keys at any time."
+  },
+  {
+    id: "faq-4",
+    q: "What video formats and aspect ratios are exported?",
+    a: "All videos are rendered in native 9:16 vertical format (1080x1920 HD at 60 FPS), perfectly formatted for YouTube Shorts, Instagram Reels, and TikTok."
+  },
+  {
+    id: "faq-5",
+    q: "How does the active word-by-word subtitle styling work?",
+    a: "Our subtitle engine timestamps every word spoken by the text-to-speech synthesizer and applies dynamic active word animations (such as the famous MrBeast yellow box, Hormozi glow, or Geist minimal) in real time."
+  }
+];
+---
+
+<section id="faq" class="py-16 md:py-24 border-b border-[#ebebeb] dark:border-[#262626] bg-white dark:bg-[#080808] relative transition-colors">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 space-y-3">
+      <div class="font-mono text-xs font-semibold tracking-widest text-[#525252] dark:text-[#a1a1a1] uppercase">
+        FREQUENTLY ASKED QUESTIONS
+      </div>
+      <h2 class="text-3xl md:text-4xl font-semibold text-[#171717] dark:text-white tracking-tight">
+        Got Questions? We Have Answers.
+      </h2>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="space-y-4">
+      {FAQS.map((faq, idx) => (
+        <div class="faq-item bg-[#fafafa] dark:bg-[#111111] rounded-2xl border border-[#ebebeb] dark:border-[#262626] overflow-hidden transition-all hover:border-neutral-400 dark:hover:border-neutral-600">
+          <button 
+            type="button"
+            id={`faq-btn-${idx}`}
+            class="faq-toggle w-full p-5 text-left font-semibold text-base text-[#171717] dark:text-[#ededed] flex items-center justify-between gap-4 focus-visible:outline-2 focus-visible:outline-neutral-900"
+            aria-expanded="false"
+            aria-controls={`faq-ans-${idx}`}
+          >
+            <span>{faq.q}</span>
+            <svg class="faq-arrow w-5 h-5 text-[#525252] dark:text-[#a1a1a1] transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div 
+            id={`faq-ans-${idx}`}
+            role="region"
+            aria-labelledby={`faq-btn-${idx}`}
+            class="faq-answer hidden px-5 pb-5 text-xs md:text-sm text-[#333333] dark:text-[#a1a1a1] leading-relaxed border-t border-[#ebebeb]/60 dark:border-[#262626] pt-3"
+          >
+            <p>{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const answer = item?.querySelector('.faq-answer');
+      const arrow = btn.querySelector('.faq-arrow');
+      const isCurrentlyExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll('.faq-toggle').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-arrow').forEach(a => a.classList.remove('rotate-180'));
+
+      if (!isCurrentlyExpanded && answer && arrow) {
+        answer.classList.remove('hidden');
+        arrow.classList.add('rotate-180');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

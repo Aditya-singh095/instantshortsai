@@ -1,0 +1,135 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Instant Shorts AI — Faceless Video Generator for YouTube Shorts & Instagram Reels",
+  description = "Create viral faceless YouTube Shorts, Instagram Reels, and TikTok videos automatically. Built-in script generation, voiceover synthesis, animated captions, and 9:16 background footage. No paid API key required."
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://instantshortsai.com").href;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does Instant Shorts AI work without requiring a paid API key?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unlike traditional platforms that bill you for every word via OpenAI or ElevenLabs, Instant Shorts AI utilizes client-side Web-LLM (running quantized models in your browser via WebGPU) and browser Web Speech API / free HuggingFace endpoints. You get 100% free script generation and voice synthesis with zero token bills."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I monetize videos generated with Instant Shorts AI on YouTube & Reels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, 100%! All generated scripts, audio tracks, background footage (ASMR, gameplay, space loops), and fonts carry full commercial rights. You own 100% of your AdSense, Creator Fund, and sponsor revenues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I bring my own OpenAI or ElevenLabs key if I prefer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Instant Shorts AI includes a BYOK (Bring Your Own Key) setting in the studio. You can plug in your own OpenAI, Groq, Anthropic, or ElevenLabs API keys at any time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What video formats and aspect ratios are exported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All videos are rendered in native 9:16 vertical format (1080x1920 HD at 60 FPS), perfectly formatted for YouTube Shorts, Instagram Reels, and TikTok."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the active word-by-word subtitle styling work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our subtitle engine timestamps every word spoken by the text-to-speech synthesizer and applies dynamic active word animations (such as the famous MrBeast yellow box, Hormozi glow, or Geist minimal) in real time."
+      }
+    }
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Instant Shorts AI",
+  "operatingSystem": "Web",
+  "applicationCategory": "MultimediaApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": description
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Script to prevent dark mode flash -->
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return 'dark';
+      })();
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Instant Shorts AI, YouTube Shorts generator, Instagram Reels creator, faceless video generator, AI script writer, auto subtitles, Web LLM, free video generator" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://instantshortsai.com/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://instantshortsai.com/og-image.png" />
+
+    <!-- Google Fonts: Geist Sans & Geist Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </head>
+  <body class="bg-[#fafafa] dark:bg-[#050505] text-[#171717] dark:text-[#ededed] font-sans antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-200 min-h-screen flex flex-col justify-between">
+    <slot />
+  </body>
+</html>

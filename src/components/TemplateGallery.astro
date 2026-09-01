@@ -1,0 +1,261 @@
+---
+const TEMPLATES = [
+  {
+    id: 1,
+    title: "5 Stoic Rules for Peak Focus",
+    category: "stoic",
+    categoryLabel: "🧠 Stoicism",
+    views: "1.4M Avg Views",
+    retention: "87% Retention",
+    duration: "24s",
+    bg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+    script: "Did you know Marcus Aurelius wrote: 'You have power over your mind - not outside events.' Here are 3 stoic rules to double your focus today."
+  },
+  {
+    id: 2,
+    title: "The Unsolved Mystery of Alcatraz",
+    category: "crime",
+    categoryLabel: "🔪 Dark History",
+    views: "2.8M Avg Views",
+    retention: "92% Retention",
+    duration: "32s",
+    bg: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    script: "In 1962, three inmates escaped Alcatraz using paper heads and raincoat rafts. Official reports say they drowned, but mysterious letters suggest otherwise."
+  },
+  {
+    id: 3,
+    title: "How to Build 24/7 Passive Income",
+    category: "money",
+    categoryLabel: "💰 Finance Secrets",
+    views: "890K Avg Views",
+    retention: "84% Retention",
+    duration: "28s",
+    bg: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80",
+    script: "Here is the wealth rule 99% of people learn too late: Never trade time for money indefinitely. Build digital assets that work while you sleep."
+  },
+  {
+    id: 4,
+    title: "Terrifying Space Facts: The Diamond Planet",
+    category: "space",
+    categoryLabel: "🌌 Space & Sci-Fi",
+    views: "3.1M Avg Views",
+    retention: "95% Retention",
+    duration: "22s",
+    bg: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+    script: "There is a planet made entirely of diamonds called 55 Cancri e, twice the size of Earth. But you could never touch it because temperatures reach 3900 degrees!"
+  },
+  {
+    id: 5,
+    title: "Interactive Quiz: 3 Hearts & Blue Blood",
+    category: "quiz",
+    categoryLabel: "❓ Trivia Quiz",
+    views: "4.5M Avg Views",
+    retention: "96% Retention",
+    duration: "18s",
+    bg: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=600&q=80",
+    script: "Which animal has three hearts and blue blood? You have 5 seconds to answer! If you guessed OCTOPUS, you are correct!"
+  },
+  {
+    id: 6,
+    title: "Future of AI: Humanoid Robots 2026",
+    category: "tech",
+    categoryLabel: "⚡ Tech & AI",
+    views: "1.9M Avg Views",
+    retention: "89% Retention",
+    duration: "30s",
+    bg: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80",
+    script: "By the end of 2026, over 100,000 humanoid robots will enter factory floors. Here is why the workplace as we know it is changing forever."
+  }
+];
+---
+
+<section id="templates" class="py-16 md:py-24 border-b border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#0c0c0c] relative transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <div class="font-mono text-xs font-semibold tracking-widest text-[#525252] dark:text-[#a1a1a1] uppercase mb-2">
+          PRE-BUILT VIRAL FORMULAS
+        </div>
+        <h2 class="text-3xl md:text-4xl font-semibold text-[#171717] dark:text-white tracking-tight">
+          High-Retention Video Templates
+        </h2>
+        <p class="text-[#4d4d4d] dark:text-[#a1a1a1] text-sm md:text-base mt-1 max-w-lg">
+          Proven script hooks and 9:16 layout templates optimized for 1M+ organic views on YouTube Shorts & Reels.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-1.5 bg-white dark:bg-[#111111] p-1.5 rounded-full border border-[#ebebeb] dark:border-[#333333] shadow-xs" role="tablist" aria-label="Template Category Filters">
+        <button 
+          type="button"
+          class="template-filter-btn px-3 py-1 text-xs font-semibold rounded-full bg-[#171717] dark:bg-white text-white dark:text-black transition-all focus-visible:outline-2 focus-visible:outline-neutral-900" 
+          data-filter="all"
+          aria-selected="true"
+          role="tab"
+        >All</button>
+        <button 
+          type="button"
+          class="template-filter-btn px-3 py-1 text-xs font-medium rounded-full text-[#4d4d4d] dark:text-[#a1a1a1] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all focus-visible:outline-2 focus-visible:outline-neutral-900" 
+          data-filter="stoic"
+          aria-selected="false"
+          role="tab"
+        >Stoicism</button>
+        <button 
+          type="button"
+          class="template-filter-btn px-3 py-1 text-xs font-medium rounded-full text-[#4d4d4d] dark:text-[#a1a1a1] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all focus-visible:outline-2 focus-visible:outline-neutral-900" 
+          data-filter="space"
+          aria-selected="false"
+          role="tab"
+        >Space</button>
+        <button 
+          type="button"
+          class="template-filter-btn px-3 py-1 text-xs font-medium rounded-full text-[#4d4d4d] dark:text-[#a1a1a1] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all focus-visible:outline-2 focus-visible:outline-neutral-900" 
+          data-filter="crime"
+          aria-selected="false"
+          role="tab"
+        >Dark History</button>
+        <button 
+          type="button"
+          class="template-filter-btn px-3 py-1 text-xs font-medium rounded-full text-[#4d4d4d] dark:text-[#a1a1a1] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all focus-visible:outline-2 focus-visible:outline-neutral-900" 
+          data-filter="money"
+          aria-selected="false"
+          role="tab"
+        >Finance</button>
+        <button 
+          type="button"
+          class="template-filter-btn px-3 py-1 text-xs font-medium rounded-full text-[#4d4d4d] dark:text-[#a1a1a1] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all focus-visible:outline-2 focus-visible:outline-neutral-900" 
+          data-filter="quiz"
+          aria-selected="false"
+          role="tab"
+        >Quiz</button>
+        <button 
+          type="button"
+          class="template-filter-btn px-3 py-1 text-xs font-medium rounded-full text-[#4d4d4d] dark:text-[#a1a1a1] hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all focus-visible:outline-2 focus-visible:outline-neutral-900" 
+          data-filter="tech"
+          aria-selected="false"
+          role="tab"
+        >Tech & AI</button>
+      </div>
+    </div>
+
+    <!-- Template Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {TEMPLATES.map((tmpl) => (
+        <div class="template-card bg-white dark:bg-[#111111] rounded-2xl border border-[#ebebeb] dark:border-[#262626] overflow-hidden shadow-xs hover:shadow-lg transition-all group flex flex-col justify-between" data-category={tmpl.category}>
+          
+          <!-- Image Header -->
+          <div class="relative h-48 bg-slate-900 overflow-hidden">
+            <img 
+              src={tmpl.bg} 
+              alt={tmpl.title} 
+              loading="lazy" 
+              decoding="async" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 font-mono text-[10px] text-white uppercase font-medium">
+                {tmpl.categoryLabel}
+              </span>
+              <span class="px-2 py-0.5 rounded bg-emerald-600 text-white font-mono text-[10px] font-bold">
+                {tmpl.retention}
+              </span>
+            </div>
+
+            <!-- Title Overlay -->
+            <div class="absolute bottom-3 left-3 right-3 text-white">
+              <h3 class="font-bold text-base tracking-tight leading-snug line-clamp-2 drop-shadow">
+                {tmpl.title}
+              </h3>
+              <div class="flex items-center gap-3 text-[11px] font-mono text-white/90 mt-1">
+                <span>👁️ {tmpl.views}</span>
+                <span>⏱️ {tmpl.duration}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Body Script Snippet -->
+          <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+            <p class="text-xs text-[#333333] dark:text-[#a1a1a1] font-mono leading-relaxed line-clamp-3 bg-[#fafafa] dark:bg-[#181818] p-2.5 rounded-lg border border-[#ebebeb] dark:border-[#2e2e2e]">
+              "{tmpl.script}"
+            </p>
+
+            <button 
+              type="button"
+              class="btn-use-template w-full py-2.5 bg-white dark:bg-[#1a1a1a] border border-[#ebebeb] dark:border-[#333333] hover:bg-neutral-900 dark:hover:bg-white hover:text-white dark:hover:text-black text-[#171717] dark:text-[#ededed] font-semibold text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-xs focus-visible:outline-2 focus-visible:outline-neutral-900"
+              data-title={tmpl.title}
+              data-script={tmpl.script}
+              data-niche={tmpl.category === 'stoic' ? 'stoicism' : tmpl.category}
+              aria-label={`Load ${tmpl.title} template into studio`}
+            >
+              <span>Use This Template</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Filter logic
+  const filterBtns = document.querySelectorAll('.template-filter-btn');
+  const templateCards = document.querySelectorAll('.template-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-[#171717]', 'dark:bg-white', 'text-white', 'dark:text-black', 'font-semibold');
+        b.classList.add('text-[#4d4d4d]', 'dark:text-[#a1a1a1]', 'hover:bg-neutral-100', 'dark:hover:bg-neutral-800');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('bg-[#171717]', 'dark:bg-white', 'text-white', 'dark:text-black', 'font-semibold');
+      btn.classList.remove('text-[#4d4d4d]', 'dark:text-[#a1a1a1]', 'hover:bg-neutral-100', 'dark:hover:bg-neutral-800');
+      btn.setAttribute('aria-selected', 'true');
+
+      const filter = btn.getAttribute('data-filter');
+      templateCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Use Template button handler
+  document.querySelectorAll('.btn-use-template').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const title = (e.currentTarget as HTMLElement).getAttribute('data-title');
+      const script = (e.currentTarget as HTMLElement).getAttribute('data-script');
+      const niche = (e.currentTarget as HTMLElement).getAttribute('data-niche');
+
+      const topicInput = document.getElementById('studioTopicInput') as HTMLInputElement;
+      const scriptTextarea = document.getElementById('scriptTextarea') as HTMLTextAreaElement;
+      const nicheSelect = document.getElementById('nicheSelect') as HTMLSelectElement;
+
+      if (topicInput && title) topicInput.value = title;
+      if (scriptTextarea && script) {
+        scriptTextarea.value = script;
+        scriptTextarea.dispatchEvent(new Event('input'));
+      }
+      if (nicheSelect && niche && nicheSelect.querySelector(`option[value="${niche}"]`)) {
+        nicheSelect.value = niche;
+        nicheSelect.dispatchEvent(new Event('change'));
+      }
+
+      document.getElementById('studio')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>

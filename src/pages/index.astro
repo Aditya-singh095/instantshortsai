@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ShortStudio from '../components/ShortStudio.astro';
+import NoLlmEngine from '../components/NoLlmEngine.astro';
+import FeaturesGrid from '../components/FeaturesGrid.astro';
+import TemplateGallery from '../components/TemplateGallery.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Instant Shorts AI — Faceless Video Generator for YouTube Shorts & Instagram Reels"
+  description="Generate viral faceless YouTube Shorts, Instagram Reels, and TikToks automatically. Script generation, speech synthesis, animated captions, 9:16 background footage with zero paid API keys."
+>
+  <Navbar />
+  <main id="main-content">
+    <HeroSection />
+    <ShortStudio />
+    <NoLlmEngine />
+    <FeaturesGrid />
+    <TemplateGallery />
+    <ComparisonTable />
+    <PricingSection />
+    <FaqSection />
+    <CtaBand />
+  </main>
+  <Footer />
+</Layout>

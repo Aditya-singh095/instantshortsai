@@ -1,0 +1,143 @@
+npx skills add https://github.com/lombiq/tailwind-agent-skills --skill tailwind-4-docs
+
+npx getdesign@latest add vercel
+
+npx getdesign@latest add coinbase
+
+npx getdesign@latest add notion
+
+npx getdesign@latest add cursor
+
+npx getdesign@latest add runwayml
+
+
+
+CompileFuture Website Checklist ✅
+create Website with Prompt (give competitor url)
+use (logofa.st) for the logo & favicon
+Add Favicon (use real favicon generator)
+website should be mobile responsive
+do SEO with prompt (write about the tool 800 – 1200 words)
+add FAQ section
+add privacy policy, about us, terms & conditions, contact us pages
+add error pages (404, 500)
+robots.txt
+sitemap.xml
+add google analytics code
+add _headers file for cloudflare pages / if using workers then disable workers.dev domains after connecting the .com domain
+add mail routing in cloudflare for getting emails in your gmail
+Website Creation Prompt
+I have initialized a new astrojs project, use astro docs mcp and tailwind-4-docs skill for creating the website. Also use @DESIGN.md file for the website design.
+
+Name: Font Finder AI
+Domain: fontfinderai.com
+
+Website Description:
+Create a font finder website that will have option to find fonts using image and the results should contain both paid and free fonts but user can filter only free fonts easily.
+   
+My competitor website is fontdetector.org and it have some features which we need and we need to make a website better than it. Give me ideas how to make it better. go on to this website and check what exactly we need to make. Do not copy design or ui from that website.
+SEO Prompt
+Do the On Page SEO of this Website for
+
+Main Keyword: Font Finder
+Supporting Keywords:
+font finder by image
+free font finder
+font finder from image free
+font finder free
+font finder from image
+ai font finder
+font finder upload image
+font finder by text
+google font finder
+what the font finder
+image font finder
+
+these above keywords, also use proper og meta tags for SEO
+on home page write 800 - 1200 words about the tool for SEO
+FAQ Section Prompt
+add seo friendly FAQ section for these below questions:
+
+what the font finder
+Can Google identify a font?
+How can I identify a type of font?
+How to see which font is used?
+Can I use AI to identify a font?
+Is there a free font finder?
+How to match a font?
+Can I take a picture of a font and find it?
+Where can I find free fonts?
+How to find a specific text font?
+How do I use Google Fonts?
+How to identify a font in a PDF?
+Can I create a font using AI?
+
+NOTE: Use JSON-LD for FAQ SEO
+example: ```
+ <script type="application/ld+json">
+ {
+ "@context": "<https://schema.org>",
+ "@type": "FAQPage",
+ "mainEntity": [{
+ "@type": "Question",
+ "name": "How to find an apprenticeship?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "<p>We provide an official service to search through available apprenticeships. To get started, create an account here, specify the desired region, and your preferences. You will be able to search through all officially registered open apprenticeships.</p>"
+ }
+ }, {
+ "@type": "Question",
+ "name": "Whom to contact?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "You can contact the apprenticeship office through our official phone hotline above, or with the web-form below. We generally respond to written requests within 7-10 days."
+ }
+ }]
+ }
+ </script>
+Cloudflare Deployment Prompts
+this website is static or not? and should i deploy it in cloudflare pages or workers ?
+Cloudflare Pages:
+I have already loggedin to cloudflare wrangler, now deploy this astrojs website to cloudflare pages and take info from astro docs mcp if needed. Also add deploy script to package.json
+Cloudflare Workers:
+I have already loggedin to cloudflare wrangler, now deploy this astrojs website to cloudflare workers and take info from astro docs mcp if needed. Also add deploy script to package.json
+Disable workers.dev or pages.dev domains indexing
+If deployed in CF Pages:
+add this _headers file in public folder and edit your pages.dev url
+
+_headers file
+https://project.pages.dev/*
+  X-Robots-Tag: noindex
+If deployed in CF Workers:
+just turn off workers domains after adding a custom domain in the workers settings.
+
+Affiliate disclosure: Some links below are affiliate links. If you buy through them I earn a small commission at no extra cost to you — it helps me keep making free videos.
+
+Buying Domains:
+Namecheap: https://namecheap.pxf.io/c/7622160/386170/5618
+
+Spaceship: https://spaceship.sjv.io/c/7622160/1794549/21274
+
+(If you buy spaceship domain using this above link it will support our channel to keep making FREE videos like this)
+
+BigRock: https://www.bigrock.in/
+
+Godaddy: https://www.godaddy.com/en-in
+
+Hostinger: https://www.hostinger.com/in
+
+Links:
+Logo & Favicon: https://logofa.st/
+Ahrefs Keyword Generator: https://ahrefs.com/keyword-generator
+Domain Search: https://instantdomainsearch.com/
+Vercel Design MD: https://getdesign.md/vercel/design-md – npx getdesign@latest add vercel
+Web design guidelines skill: https://www.skills.sh/vercel-labs/agent-skills/web-design-guidelines
+Tailwind v4 Docs: https://www.skills.sh/lombiq/tailwind-agent-skills/tailwind-4-docs or https://github.com/Lombiq/Tailwind-Agent-Skills
+AtroJS Docs: https://docs.astro.build/en/getting-started/
+Google Analytics: https://analytics.google.com
+AstroJS Cloudflare Deploy: https://docs.astro.build/en/guides/deploy/cloudflare/
+AstroJS MCP Server: https://docs.astro.build/en/guides/build-with-ai/#astro-docs-mcp-server
+Cloudflare: https://dash.cloudflare.com/login
+Google Search Console: https://search.google.com/search-console/about
+Bing Webmaster: https://www.bing.com/webmasters/about
+Google Adsense: https://adsense.google.com/start/

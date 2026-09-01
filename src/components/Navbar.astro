@@ -1,0 +1,172 @@
+---
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-[#ebebeb] dark:border-[#262626] bg-[#fafafa]/95 dark:bg-[#000000]/90 backdrop-blur-md transition-colors duration-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2.5 group focus-visible:outline-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-white rounded-lg" aria-label="Instant Shorts AI Homepage">
+      <div class="w-8 h-8 rounded-lg bg-[#171717] dark:bg-white text-white dark:text-black flex items-center justify-center font-mono font-bold text-xs tracking-tighter transition-transform group-hover:scale-105">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.5 4.5l15 7.5-15 7.5v-15z" />
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-semibold text-base tracking-tight text-[#171717] dark:text-[#ededed] leading-none">INSTANT SHORTS <span class="font-mono text-xs font-medium px-1.5 py-0.5 rounded bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 ml-1">AI</span></span>
+        <span class="font-mono text-[10px] text-[#525252] dark:text-[#a1a1a1] tracking-wide mt-0.5">instantshortsai.com</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="hidden md:flex items-center gap-1" aria-label="Main Navigation">
+      <a href="#studio" class="px-3 py-1.5 text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-neutral-900">
+        Live Studio
+      </a>
+      <a href="#engine" class="px-3 py-1.5 text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 rounded-full transition-colors flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-neutral-900">
+        <span>No-LLM Engine</span>
+        <span class="text-[10px] font-mono bg-emerald-100 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-300 px-1.5 py-0.5 rounded font-semibold border border-emerald-200 dark:border-emerald-800">Free API</span>
+      </a>
+      <a href="#features" class="px-3 py-1.5 text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-neutral-900">
+        Features
+      </a>
+      <a href="#templates" class="px-3 py-1.5 text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-neutral-900">
+        Templates
+      </a>
+      <a href="#pricing" class="px-3 py-1.5 text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-neutral-900">
+        Pricing
+      </a>
+      <a href="#faq" class="px-3 py-1.5 text-sm font-medium text-[#4d4d4d] dark:text-[#a1a1a1] hover:text-[#171717] dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-neutral-900">
+        FAQ
+      </a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      
+      <!-- Theme Toggle Button -->
+      <button 
+        id="themeToggleBtn"
+        type="button"
+        class="p-2 rounded-full text-[#4d4d4d] dark:text-[#ededed] hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-[#ebebeb] dark:border-[#333333] transition-all focus-visible:outline-2 focus-visible:outline-neutral-900"
+        aria-label="Toggle dark and light mode"
+      >
+        <!-- Sun Icon (visible in dark mode) -->
+        <svg id="sunIcon" class="w-4 h-4 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <!-- Moon Icon (visible in light mode) -->
+        <svg id="moonIcon" class="w-4 h-4 block dark:hidden text-[#171717]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+
+      <!-- Status Badge -->
+      <div class="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-300 font-mono text-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Local Web-LLM Ready</span>
+      </div>
+
+      <a href="#studio" class="px-3.5 py-1.5 text-xs font-semibold text-white dark:text-black bg-[#171717] dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 rounded-full transition-all flex items-center gap-1.5 shadow-sm focus-visible:outline-2 focus-visible:outline-neutral-900">
+        <span>Start Free</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobileMenuToggle" 
+        type="button" 
+        class="md:hidden p-2 rounded-lg text-[#171717] dark:text-white hover:bg-neutral-200/70 dark:hover:bg-neutral-800 transition-colors focus-visible:outline-2 focus-visible:outline-neutral-900" 
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileNavMenu"
+      >
+        <svg id="hamburgerIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="closeMenuIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileNavMenu" class="md:hidden hidden border-t border-[#ebebeb] dark:border-[#262626] bg-[#fafafa] dark:bg-[#0a0a0a] px-4 py-4 space-y-2 shadow-lg animate-in fade-in duration-150">
+    <a href="#studio" class="mobile-nav-link block px-3 py-2 text-sm font-medium text-[#171717] dark:text-[#ededed] hover:bg-neutral-200/70 dark:hover:bg-neutral-800 rounded-lg">
+      Live Studio
+    </a>
+    <a href="#engine" class="mobile-nav-link block px-3 py-2 text-sm font-medium text-[#171717] dark:text-[#ededed] hover:bg-neutral-200/70 dark:hover:bg-neutral-800 rounded-lg flex items-center justify-between">
+      <span>No-LLM Engine</span>
+      <span class="text-[10px] font-mono bg-emerald-100 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-300 px-1.5 py-0.5 rounded font-semibold">Free API</span>
+    </a>
+    <a href="#features" class="mobile-nav-link block px-3 py-2 text-sm font-medium text-[#171717] dark:text-[#ededed] hover:bg-neutral-200/70 dark:hover:bg-neutral-800 rounded-lg">
+      Features
+    </a>
+    <a href="#templates" class="mobile-nav-link block px-3 py-2 text-sm font-medium text-[#171717] dark:text-[#ededed] hover:bg-neutral-200/70 dark:hover:bg-neutral-800 rounded-lg">
+      Templates
+    </a>
+    <a href="#pricing" class="mobile-nav-link block px-3 py-2 text-sm font-medium text-[#171717] dark:text-[#ededed] hover:bg-neutral-200/70 dark:hover:bg-neutral-800 rounded-lg">
+      Pricing
+    </a>
+    <a href="#faq" class="mobile-nav-link block px-3 py-2 text-sm font-medium text-[#171717] dark:text-[#ededed] hover:bg-neutral-200/70 dark:hover:bg-neutral-800 rounded-lg">
+      FAQ
+    </a>
+  </div>
+</header>
+
+<script>
+  // Theme Toggle with LocalStorage & OS Preference
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  
+  function applyTheme(isDark: boolean) {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  // Init theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    applyTheme(false);
+  } else {
+    applyTheme(true);
+  }
+
+  themeToggleBtn?.addEventListener('click', () => {
+    const isCurrentlyDark = document.documentElement.classList.contains('dark');
+    applyTheme(!isCurrentlyDark);
+  });
+
+  // Mobile Menu Logic
+  const toggleBtn = document.getElementById('mobileMenuToggle');
+  const mobileMenu = document.getElementById('mobileNavMenu');
+  const hamburger = document.getElementById('hamburgerIcon');
+  const closeIcon = document.getElementById('closeMenuIcon');
+
+  toggleBtn?.addEventListener('click', () => {
+    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    toggleBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    
+    if (mobileMenu) {
+      mobileMenu.classList.toggle('hidden');
+    }
+    hamburger?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+      hamburger?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    });
+  });
+</script>
