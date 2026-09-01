@@ -154,29 +154,22 @@ export async function renderAndExportShortVideo(options: RenderOptions): Promise
       audioCtx = new AudioContextClass();
       audioStreamNode = audioCtx.createMediaStreamDestination();
 
-      if (activeAudioTrackId === "custom" || activeAudioTrackId) {
-        // Custom user audio file playback
-        let trackUrl = audioTrackOptions?.customAudioUrl || "";
-        if (!trackUrl && activeAudioTrackId && activeAudioTrackId !== "none") {
-          trackUrl = `/audio/${activeAudioTrackId}.mp3`;
-        }
+      const customUrl = audioTrackOptions?.customAudioUrl;
+      if (customUrl) {
+        const audioEl = new Audio(customUrl);
+        audioEl.crossOrigin = "anonymous";
+        audioEl.currentTime = audioTrimStart;
+        audioEl.playbackRate = audioSpeedRate;
+        audioEl.volume = audioVolume;
 
-        if (trackUrl) {
-          const audioEl = new Audio(trackUrl);
-          audioEl.crossOrigin = "anonymous";
-          audioEl.currentTime = audioTrimStart;
-          audioEl.playbackRate = audioSpeedRate;
-          audioEl.volume = audioVolume;
-
-          const mediaSource = audioCtx.createMediaElementSource(audioEl);
-          const gainNode = audioCtx.createGain();
-          gainNode.gain.value = audioVolume;
-          mediaSource.connect(gainNode);
-          gainNode.connect(audioStreamNode);
-          audioEl.play().catch((err) => {
-            console.warn("Exporter MP3 audio play note:", err);
-          });
-        }
+        const mediaSource = audioCtx.createMediaElementSource(audioEl);
+        const gainNode = audioCtx.createGain();
+        gainNode.gain.value = audioVolume;
+        mediaSource.connect(gainNode);
+        gainNode.connect(audioStreamNode);
+        audioEl.play().catch((err) => {
+          console.warn("Exporter custom audio play note:", err);
+        });
       }
     } catch (e) {
       console.warn("Audio exporter note:", e);

@@ -144,30 +144,16 @@
             </div>
 
             <div>
-              <label for="musicSelect" class="text-[11px] font-mono text-[#333333] dark:text-[#a1a1a1] font-medium block mb-1">Background Track / IG Sound</label>
+              <label for="musicSelect" class="text-[11px] font-mono text-[#333333] dark:text-[#a1a1a1] font-medium block mb-1">Background Audio Mode</label>
               <select 
                 id="musicSelect" 
                 class="w-full text-xs bg-white dark:bg-[#1a1a1a] border border-[#ebebeb] dark:border-[#333333] rounded-lg p-2 text-[#171717] dark:text-[#ededed] outline-none focus-visible:ring-2 focus-visible:ring-neutral-200 dark:focus-visible:ring-neutral-700 font-semibold"
               >
-                <optgroup label="🔥 Trending Instagram Reel Sounds">
-                  <option value="legacy_slowed" selected>🔥 Legacy (Slowed & Reverb) — IG Trend</option>
-                  <option value="pixy_slowed">💖 Pixy (Slowed & Aesthetic) — IG Trend</option>
-                  <option value="phonk_drift">🏎️ Brazil Funk / Phonk (Slowed) — IG Trend</option>
-                  <option value="memory_reboot">🌃 Memory Reboot (Cyber Slowed)</option>
-                  <option value="gigachad_slowed">🗿 GigaChad Theme (Phonk Slowed)</option>
-                </optgroup>
-                <optgroup label="🎵 Instrumental Ambient Beats">
-                  <option value="lofi">🎵 Chill Lo-Fi Focus Beat</option>
-                  <option value="ambient">🌌 Dark Suspense Ambient</option>
-                  <option value="energy">⚡ Upbeat Energy Rhythm</option>
-                </optgroup>
-                <optgroup label="📁 Custom Track Upload">
-                  <option value="custom">📁 Upload & Trim Custom Audio File</option>
-                  <option value="none">🔇 Silence (Voiceover Only)</option>
-                </optgroup>
+                <option value="custom" selected>📁 Upload Custom Audio Track (.mp3, .wav, .m4a)</option>
+                <option value="none">🔇 Voiceover Only (No Background Music)</option>
               </select>
               <div id="activeTrackUrlBadge" class="mt-1 text-[10px] font-mono text-cyan-600 dark:text-cyan-400 truncate bg-cyan-50 dark:bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-200 dark:border-cyan-800">
-                🎵 Track File Link: /audio/legacy_slowed.mp3
+                🎵 Audio Status: Custom Upload Ready (Click Upload Audio File below)
               </div>
             </div>
           </div>
@@ -1054,33 +1040,29 @@
 
   function startBgMusic() {
     stopBgMusic();
-    const trackId = musicSelect?.value || 'legacy_slowed';
-    if (trackId === 'none') {
-      if (activeTrackUrlBadge) activeTrackUrlBadge.textContent = '🎵 Track: Silence / Voiceover Only';
+    const trackId = musicSelect?.value || 'custom';
+    if (trackId === 'none' || !customAudioObjectUrl) {
+      if (activeTrackUrlBadge) {
+        activeTrackUrlBadge.textContent = !customAudioObjectUrl 
+          ? '🎵 Audio Status: Please select an audio file using Upload Audio File' 
+          : '🎵 Audio Mode: Voiceover Only (Silence)';
+      }
       return;
     }
 
-    let trackFileUrl = '';
-    if (trackId === 'custom' && customAudioObjectUrl) {
-      trackFileUrl = customAudioObjectUrl;
-      if (activeTrackUrlBadge) activeTrackUrlBadge.textContent = `🎵 Custom File: ${customAudioFileName?.textContent || 'User Audio'}`;
-    } else {
-      trackFileUrl = `/audio/${trackId}.mp3`;
-      if (activeTrackUrlBadge) activeTrackUrlBadge.textContent = `🎵 Track File Link: ${window.location.origin}/audio/${trackId}.mp3`;
+    if (activeTrackUrlBadge) {
+      activeTrackUrlBadge.textContent = `🎵 Active Upload: ${customAudioFileName?.textContent || 'Custom Audio'}`;
     }
 
     try {
-      activeBgAudioEl = new Audio(trackFileUrl);
+      activeBgAudioEl = new Audio(customAudioObjectUrl);
       activeBgAudioEl.loop = true;
       activeBgAudioEl.volume = (parseFloat(musicVolume?.value || '80') / 100);
       activeBgAudioEl.playbackRate = parseFloat(musicSpeedRate?.value || '1.0');
-      
-      if (trackId === 'custom') {
-        activeBgAudioEl.currentTime = parseFloat(musicTrimStart?.value || '0');
-      }
+      activeBgAudioEl.currentTime = parseFloat(musicTrimStart?.value || '0');
 
       activeBgAudioEl.play().catch(e => {
-        console.warn("Real MP3 audio play note:", e);
+        console.warn("Custom MP3 audio play note:", e);
       });
     } catch (e) {
       console.warn("Audio element error:", e);
@@ -1091,9 +1073,6 @@
     const trackId = musicSelect.value;
     if (trackId === 'custom' && !customAudioObjectUrl) {
       customAudioInput?.click();
-    }
-    if (trackId !== 'custom' && activeTrackUrlBadge) {
-      activeTrackUrlBadge.textContent = `🎵 Track File Link: ${window.location.origin}/audio/${trackId}.mp3`;
     }
     if (isPlaying) startBgMusic();
     else stopBgMusic();
