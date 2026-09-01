@@ -274,6 +274,10 @@ export async function renderAndExportShortVideo(options: RenderOptions): Promise
         ctx.filter = "none";
       }
 
+      // Fallback background frame fill
+      ctx.fillStyle = "#0f172a";
+      ctx.fillRect(0, 0, 1080, 1920);
+
       // Draw Image or Video frame
       if (activeClip.type === "video" && activeEl instanceof HTMLVideoElement && activeEl.readyState >= 2) {
         const vW = activeEl.videoWidth || 1080;
