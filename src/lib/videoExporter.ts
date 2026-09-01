@@ -10,7 +10,7 @@ export interface MediaClip {
 }
 
 export interface AudioTrackOptions {
-  trackId: string; // "legacy_slowed", "pixy_slowed", "phonk_drift", "memory_reboot", "gigachad_slowed", "lofi", "ambient", "energy", "custom", "none"
+  trackId: string; // "custom" or "none"
   customAudioUrl?: string | null;
   trimStartSec?: number;
   trimDurationSec?: number;
@@ -35,7 +35,13 @@ function drawRoundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: n
   if (typeof ctx.roundRect === "function") {
     ctx.roundRect(x, y, w, h, r);
   } else {
-    ctx.rect(x, y, w, h);
+    // Manual arcTo fallback for older Safari
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
   }
 }
 
@@ -47,7 +53,7 @@ export async function renderAndExportShortVideo(options: RenderOptions): Promise
     bgImageUrl,
     bgMediaType = "image",
     captionStyle,
-    musicTrack = "lofi",
+    musicTrack = "none",
     audioTrackOptions,
     durationSec = 15,
     onProgress
@@ -157,7 +163,10 @@ export async function renderAndExportShortVideo(options: RenderOptions): Promise
       const customUrl = audioTrackOptions?.customAudioUrl;
       if (customUrl) {
         const audioEl = new Audio(customUrl);
-        audioEl.crossOrigin = "anonymous";
+        // Only set crossOrigin for remote URLs; blob: URLs break with CORS headers
+        if (customUrl.startsWith("http")) {
+          audioEl.crossOrigin = "anonymous";
+        }
         audioEl.currentTime = audioTrimStart;
         audioEl.playbackRate = audioSpeedRate;
         audioEl.volume = audioVolume;
@@ -229,8 +238,8 @@ export async function renderAndExportShortVideo(options: RenderOptions): Promise
         onProgress(pct, `Compositing frame ${currentFrame} of ${totalFrames} (${currentTimeSec.toFixed(1)}s)...`);
       }
 
-      // Base dark canvas
-      ctx.fillStyle = "#0a0a0c";
+      // Base dark canvas fill
+      ctx.fillStyle = "#0f172a";
       ctx.fillRect(0, 0, 1080, 1920);
 
       // Determine active media clip from sequence
@@ -266,10 +275,6 @@ export async function renderAndExportShortVideo(options: RenderOptions): Promise
       } else {
         ctx.filter = "none";
       }
-
-      // Fallback background frame fill
-      ctx.fillStyle = "#0f172a";
-      ctx.fillRect(0, 0, 1080, 1920);
 
       // Draw Image or Video frame
       if (activeClip.type === "video" && activeEl instanceof HTMLVideoElement && activeEl.readyState >= 2) {

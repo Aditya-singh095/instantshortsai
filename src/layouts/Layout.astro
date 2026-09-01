@@ -11,7 +11,7 @@ const {
   description = "Create viral faceless YouTube Shorts, Instagram Reels, and TikTok videos automatically. Built-in script generation, voiceover synthesis, animated captions, and 9:16 background footage. No paid API key required."
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, "https://instantshortsai.com").href;
+const canonicalURL = new URL(Astro.url.pathname, "https://instantshortsai.vercel.app").href;
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -111,14 +111,14 @@ const softwareSchema = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://instantshortsai.com/og-image.png" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://instantshortsai.com/og-image.png" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" />
 
     <!-- Google Fonts: Geist Sans & Geist Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

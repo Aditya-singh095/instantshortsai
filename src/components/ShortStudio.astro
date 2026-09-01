@@ -14,7 +14,7 @@
           Instant Shorts Studio
         </h2>
         <p class="text-[#4d4d4d] dark:text-[#a1a1a1] text-sm md:text-base mt-1 max-w-xl">
-          Customize scripts, add Instagram trending audio (Legacy slowed, Pixy), upload & trim custom music, arrange multiple images/videos with filter effects, and preview/export 9:16 HD vertical video.
+          Customize AI scripts, upload & trim custom background music, arrange multiple images/videos with filter effects, and preview/export 9:16 HD vertical video.
         </p>
       </div>
 
@@ -125,10 +125,10 @@
           <label class="text-xs font-mono font-semibold uppercase tracking-wider text-[#171717] dark:text-[#ededed] flex items-center justify-between">
             <span class="flex items-center gap-1.5">
               <span class="w-5 h-5 rounded bg-[#171717] dark:bg-white text-white dark:text-black flex items-center justify-center text-[10px]">2</span>
-              Instagram Trending Audio & Music Trimmer
+              Background Audio & Voice Settings
             </span>
             <span class="text-[10px] text-pink-600 dark:text-pink-400 font-bold flex items-center gap-1">
-              🔥 Trending IG Sounds
+              🎵 Upload Your Track
             </span>
           </label>
 
@@ -476,7 +476,7 @@
                 </div>
 
                 <div id="audioEngineLabel" class="text-[10px] font-mono text-cyan-300">
-                  IG Sound + Speech
+                  Audio + Speech
                 </div>
               </div>
 
@@ -1008,27 +1008,11 @@
   }
   initWebGpuIndicator();
 
-  // Audio Context & Background Audio Engine
-  let audioCtx: AudioContext | null = null;
-  let bgMusicOscillators: any[] = [];
+  // Background Audio Engine
   let activeBgAudioEl: HTMLAudioElement | null = null;
   const activeTrackUrlBadge = document.getElementById('activeTrackUrlBadge');
 
-  function initAudioCtx() {
-    if (!audioCtx) {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-      if (AudioContextClass) {
-        audioCtx = new AudioContextClass();
-      }
-    }
-  }
-
   function stopBgMusic() {
-    bgMusicOscillators.forEach((osc) => {
-      try { osc.stop(); } catch (_) {}
-    });
-    bgMusicOscillators = [];
-
     if (activeBgAudioEl) {
       try {
         activeBgAudioEl.pause();
@@ -1244,19 +1228,8 @@
     const text = scriptTextarea?.value || '';
     if (!text.trim()) return;
 
-    initAudioCtx();
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume().catch(() => {});
-    }
-
-    const trackId = musicSelect?.value || 'legacy_slowed';
-    if (trackId === 'custom' && customAudioObjectUrl) {
-      previewAudioEl = new Audio(customAudioObjectUrl);
-      previewAudioEl.currentTime = parseFloat(musicTrimStart?.value || '0');
-      previewAudioEl.volume = parseFloat(musicVolume?.value || '80') / 100;
-      previewAudioEl.playbackRate = parseFloat(musicSpeedRate?.value || '1.0');
-      previewAudioEl.play().catch(() => {});
-    } else {
+    // Play uploaded custom audio during preview
+    if (customAudioObjectUrl && musicSelect?.value !== 'none') {
       startBgMusic();
     }
 
