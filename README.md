@@ -2,7 +2,9 @@
 
 > **No-Cost, Client-Side Faceless Video Generator for YouTube Shorts, Instagram Reels & TikTok**
 
-Instant Shorts AI is an open-source, high-retention 9:16 vertical video automation platform. It turns script hooks into production-ready 1080x1920 HD vertical videos complete with spoken voiceover, dynamic word-by-word animated captions, Instagram trending audio tracks (Legacy slowed, Pixy), audio trimming controls, and multi-clip visual sequence compositing—all without requiring paid API tokens.
+- ⚡ **Live Vercel Production Site**: [https://instantshortsai.vercel.app](https://instantshortsai.vercel.app)
+- 🌐 **Cloudflare Backup Mirror**: [https://instantshortsai.instantshortsai.workers.dev](https://instantshortsai.instantshortsai.workers.dev)
+- 🐙 **GitHub Repository**: [https://github.com/Aditya-singh095/instantshortsai](https://github.com/Aditya-singh095/instantshortsai)
 
 ![Instant Shorts AI Studio](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80)
 
